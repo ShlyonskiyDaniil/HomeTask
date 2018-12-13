@@ -50,6 +50,7 @@ public:
     }
 } HashTable;
 
+size_t Hash2 (int);
 size_t Hash1 (int);
 size_t NumGenerate ();
 void* Convert (int);

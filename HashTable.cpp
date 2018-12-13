@@ -21,6 +21,11 @@ size_t Hash1 (int key)
     return ERROR;
 }
 
+size_t Hash2 (int key)
+{
+    return key % TABLEHEIGHT;
+}
+
 void HashTable::Registrate (int key)
 {
     size_t hash = this->Hash(key);
