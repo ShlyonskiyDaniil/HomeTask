@@ -132,4 +132,32 @@ void* Swap (Node* node1, Node* node2)
 }
 
 
+void* Cleaner (Node* base_node)
+{
+#ifndef FAST_LIST
+    if (base_node == NULL)
+    {
+        return NULL;
+    }
 
+    if (base_node->prev != NULL)
+    {
+        printf ("Used Node was not head Node.");
+        return NULL;
+    }
+
+    if (Is_ok(base_node) == notOK)
+    {
+        return NULL;
+    }
+#endif
+
+    Node* next = base_node;
+
+    while (base_node!= NULL)
+    {
+        next = base_node->next;
+        delete base_node;
+        base_node = next;
+    }
+}

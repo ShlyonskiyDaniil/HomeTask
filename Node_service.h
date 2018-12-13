@@ -40,7 +40,12 @@ void* Nseek (Node*, int);
  */
 void* Swap (Node*, Node*);
 
-
+/*
+ *  Cleaner удалает созданный список.
+ *  Возвращает NULL в случае ошибки.
+ *  В качестве аргумента принимает указатель на первый узел списка.
+ */
+void* Cleaner (Node*);
 
 #include "Node_service.cpp"
 #endif
