@@ -10,7 +10,7 @@ typedef struct slist{
     list *head;
     list *tail;
 } slist;
-
+// создание нового списка
 slist * new_list(void) {
     slist *lt = malloc(sizeof(slist));
     lt->size = 0;
@@ -18,6 +18,7 @@ slist * new_list(void) {
     lt->tail = lt->head;
     return lt;
 }
+// удаление списка
 void delete_list(list ** head) {
     list* prev = NULL;
     while ((*head)->next) {
@@ -27,27 +28,28 @@ void delete_list(list ** head) {
     }
     free(*head);
 }
+//вставка элемента на n-ое занчение
 void insert(list*head, unsigned n,int value) {
     unsigned i = 0;
     list *tmp = NULL;
-    // Находим нужный элемент, если вышли за пределы списка, то выходим из цикла   
+    // Находим нужный элемент, если вышли за пределы списка, то выходим из цикла
     while (i<n && head->next) {
         head = head->next;
         i++;
     }
     tmp = (list*)malloc(sizeof(list));
     tmp->value = value;
-    // если єто не послдений элемент, то next  перекидываем на следущий узел
+    // если это не послдений элемент, то next  перекидываем на следущий узел
     if (head->next) {
         tmp->next = head->next;
-    } 
+    }
     // иначе на NULL
     else {
         tmp->next = NULL;
     }
     head->next = tmp;
 }
-
+// печатаем список
 void print_list(const struct list* head) {
     while (head) {
         printf("%d",head->value);
