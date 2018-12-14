@@ -27,11 +27,20 @@ void delete_list(list ** head) {
     }
     free(*head);
 }
+<<<<<<< HEAD
 void insert(list*head, unsigned n,int value) {
     unsigned i = 0;
     list *tmp = NULL;
     // Находим нужный элемент, если вышли за пределы списка, то выходим из цикла   
     while (i<n && head->next) {
+=======
+//вставка элемента
+void insert(list*head, unsigned n,int value) {
+    unsigned i = 0;
+    list *tmp = NULL;
+    // Находим нужный элемент, если вышли за пределы списка, то выходим из цикла
+    while (i < n && head->next) {
+>>>>>>> 5db738b3b7d72556b2d173981eed7ac5cdfe2630
         head = head->next;
         i++;
     }
