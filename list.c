@@ -28,33 +28,15 @@ void delete_list(list ** head) {
     free(*head);
 }
 <<<<<<< HEAD
-void insert(list*head, unsigned n,int value) {
-    unsigned i = 0;
-    list *tmp = NULL;
-    // Находим нужный элемент, если вышли за пределы списка, то выходим из цикла   
-    while (i<n && head->next) {
-=======
-//вставка элемента
-void insert(list*head, unsigned n,int value) {
-    unsigned i = 0;
-    list *tmp = NULL;
-    // Находим нужный элемент, если вышли за пределы списка, то выходим из цикла
-    while (i < n && head->next) {
->>>>>>> 5db738b3b7d72556b2d173981eed7ac5cdfe2630
-        head = head->next;
-        i++;
-    }
-    tmp = (list*)malloc(sizeof(list));
-    tmp->value = value;
-    // если єто не послдений элемент, то next  перекидываем на следущий узел
-    if (head->next) {
-        tmp->next = head->next;
-    } 
-    // иначе на NULL
-    else {
-        tmp->next = NULL;
-    }
-    head->next = tmp;
+struct list * insert(list *lst, int number)
+{
+    struct list *tmp, *p;
+    tmp = (struct list*)malloc(sizeof(list));
+    p = lst->next; // сохранение указателя на следующий узел
+    lst->next = tmp; // предыдущий узел указывает на создаваемый
+    tmp->value = number; // сохранение поля данных добавляемого узла
+    tmp->next = p; // созданный узел указывает на следующий элемент
+    return(tmp);
 }
 
 void print_list(const struct list* head) {
