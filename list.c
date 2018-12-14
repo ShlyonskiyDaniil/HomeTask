@@ -29,15 +29,25 @@ void delete_list(list ** head) {
     free(*head);
 }
 //вставка элемента
-struct list * insert(list *lst, int number)
-{
-    struct list *tmp, *p;
-    tmp = (struct list*)malloc(sizeof(list));
-    p = lst->next; 
-    lst->next = tmp;
-    tmp->value = number; 
-    tmp->next = p; 
-    return(tmp);
+void insert(list*head, unsigned n,int value) {
+    unsigned i = 0;
+    list *tmp = NULL;
+    // Находим нужный элемент, если вышли за пределы списка, то выходим из цикла
+    while (i < n && head->next) {
+        head = head->next;
+        i++;
+    }
+    tmp = (list*)malloc(sizeof(list));
+    tmp->value = value;
+    // если это не послдений элемент, то next  перекидываем на следущий узел
+    if (head->next) {
+        tmp->next = head->next;
+    }
+    // иначе на NULL
+    else {
+        tmp->next = NULL;
+    }
+    head->next = tmp;
 }
 // печатаем список
 void print_list(const struct list* head) {
