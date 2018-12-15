@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node
+typedef struct node
 {
     int value;
     struct node * left;
     struct node * right;
-};
+} node;
 
-struct tree
+typedef struct tree
 {
     struct node * root;   // указатель на корень дерева
     int count;            // количество узлов в дереве
-};
+} tree;
 // создание дерева
 struct tree * create_tree(void)
 {
@@ -153,6 +153,40 @@ void destroy_tree(struct tree * search_tree)
     destroy(search_tree->root);
     free(search_tree);
 }
-int main() {
+int main()
+{
+    // tree* my_tree = create_tree();
+    // insert(my_tree, 7);
+    // insert(my_tree, 8);
+    // insert(my_tree, 0);
+    // walk1(my_tree);
+    /// walk1 & walk  не работает при подаче коректных данных. (Segmentation fault)
+
+    // tree* my_tree = create_tree();
+    // insert(my_tree, 7);
+    // insert(my_tree, 8);
+    // insert(my_tree, 0);
+    // destroy_tree(my_tree);
+    // destroy_tree(NULL);
+    // destroy_tree(7);
+    /// При подаче в destroy_tree некорректных данных -- Segmentation fault.
+
+    // tree* my_tree = create_tree();
+    // insert(my_tree, 7);
+    // insert(my_tree, 8);
+    // insert(my_tree, 0);
+    // destroy(my_tree->root->left);
+    // destroy(my_tree->root->left);
+    // destroy(my_tree->root->3);
+    // node* root = my_tree->root;
+    // destroy(root);
+    // printf("%d", root->value);
+    /// При подаче в destroy некорректных данных -- Segmentation fault. При удалении корня почему-то имеется возможность
+    /// распечатать значение, которое в нём хранилось.
+
+    // tree* my_tree = create_tree();
+    // printf("%d", my_tree->root->value);
+    /// При печати значения корня возникает Segmentation fault.
+
      return 0;
 }
