@@ -153,6 +153,11 @@ void destroy_tree(struct tree * search_tree)
     destroy(search_tree->root);
     free(search_tree);
 }
+
+
+
+void traverse (node*);
+
 int main()
 {
     // tree* my_tree = create_tree();
@@ -188,5 +193,23 @@ int main()
     // printf("%d", my_tree->root->value);
     /// При печати значения корня возникает Segmentation fault.
 
+    // tree* my_tree = create_tree();
+    // insert(my_tree, 7);
+    // insert(my_tree, 8);
+    // insert(my_tree, 0);
+    // traverse(my_tree->root);
+    /// Traverse function using.
+
      return 0;
+}
+
+void traverse (node* node)
+{
+    if (node == NULL) return;
+
+    printf("%d ", node->value);
+
+    traverse(node->left);
+
+    traverse(node->right);
 }
